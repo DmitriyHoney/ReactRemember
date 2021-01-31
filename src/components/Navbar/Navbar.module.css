@@ -1,0 +1,21 @@
+.nav {
+    grid-area: nav;
+    background-color: rgb(245, 178, 178);
+    padding: 20px;
+}
+
+
+/* .list-item {} */
+
+.item a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a.active {
+    color: rgb(59, 56, 56);
+}
+
+.friends {
+    display: flex;
+}

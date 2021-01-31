@@ -1,0 +1,12 @@
+.item {
+    background-color: rgb(216, 216, 216);
+    padding: 10px;
+    border-radius: 5px;
+    width: 500px;
+    margin: 10px 0px;
+}
+
+.info {
+    margin-left: 70px;
+}
+

@@ -1,0 +1,33 @@
+.wrap {
+    display: flex;
+    
+}
+
+.users {
+    width: 30%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.dialogs {
+    width: 70%;
+    padding: 20px;
+}
+
+.msg {
+    padding: 20px;
+    background-color: #ccc;
+    border-radius: 5px;
+    margin: 7px 0px;
+    width: 70%;
+}
+
+.mine {
+    background-color: rgb(243, 243, 243);
+    margin-left: auto;
+    text-align: right;
+}
+.them {
+    background-color: rgb(210, 238, 255);
+    margin-right: auto;
+}
