@@ -1,0 +1,26 @@
+
+.wrap {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapBtn {
+    margin-top: 5px;
+    cursor: pointer;
+    padding: 7px 12px;
+    background-color: rgb(76, 159, 253);
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+}
+.wrapBtn:hover {
+    background-color: rgb(32, 134, 251);
+}
+
+.textarea {
+    padding: 15px;
+    border-radius: 3px;
+    resize: none;
+}

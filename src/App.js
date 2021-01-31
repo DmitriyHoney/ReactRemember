@@ -17,7 +17,7 @@ const App = (props) => {
                 <Navbar sidebarPage={sidebarPage}/>
                 <div className="content">
                     <Route path="/profile" component={() => <Profile profilePage={profilePage} dispatch={props.dispatch}/>}/>
-                    <Route path="/dialogs" component={() => <Dialogs dialogsPage={dialogsPage}/>}/>
+                    <Route path="/dialogs" component={() => <Dialogs dialogsPage={dialogsPage} dispatch={props.dispatch}/>}/>
                 </div>
                 
             </div>
@@ -26,3 +26,5 @@ const App = (props) => {
 }
 
 export default App;
+
+//реализовать textarea в dialogs

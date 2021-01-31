@@ -1,4 +1,7 @@
 
+import { postReducer } from './reducer-post';
+import { dialogReducer } from './reducer-dialog';
+
 const store = {
     _state: {
         profilePage: {
@@ -19,6 +22,7 @@ const store = {
                 { isMine: false, text: 'Hello!' },
                 { isMine: true, text: 'Hello, how are you?' }
             ],
+            newMessageTextarea: ''
         },
     
         sidebarPage: {
@@ -46,34 +50,19 @@ const store = {
     },
 
     dispatch(action) {
-        switch (action.type) {
-            
-            case 'ADD_POST': {
-                let newPost = {
-                    username: 'dimka',
-                    content: this._state.profilePage.textareaInput,
-                    avatar: 'https://ris.icc.ru/plugins/bree7e/cris/assets/images/man.png',
-                    likes: 0
-                }
-                this._state.profilePage.posts.push(newPost);
-                this._state.profilePage.textareaInput = ''
-                this.rerenderDOM(store);
-                break;
-            }
-            case 'UPDATE_POST_TEXTAREA': {
-                this._state.profilePage.textareaInput = action.text;
-                this.rerenderDOM(store);
-                break;
-            }
-            default: {
-                break;
-            }
-        }
+        
+        this._state.profilePage = postReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action)
+
+        this.rerenderDOM(store);
     }
 }
 
 window.store = store;
 window.state = store.getState();
+
+
+
 
 
 export default store

@@ -1,18 +1,19 @@
 import React from 'react'
 import Post from './Post/Post.jsx'
 
+import { addPostActionCreator, updatePostTextareaActionCreator } from '../../../redux/reducer-post'
+
 import cls from './MyPosts.module.css'
 
 const MyPosts = (props) => {
   let {posts, textareaInput, dispatch} = props;
 
-  function handleAddPost(e) {
-    let action = { type: 'ADD_POST' }
-    dispatch(action)
+  function handleAddPost() {
+    dispatch(addPostActionCreator())
   }
   function handleInput() {
-    let action = { type: 'UPDATE_POST_TEXTAREA', text: textareaRef.current.value }
-    dispatch(action)
+    
+    dispatch(updatePostTextareaActionCreator(textareaRef.current.value))
   }
 
   let textareaRef = React.createRef()
