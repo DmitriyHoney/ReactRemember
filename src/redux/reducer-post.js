@@ -1,7 +1,16 @@
 const ADD_POST                  = 'ADD_POST';
 const UPDATE_POST_TEXTAREA      = 'UPDATE_POST_TEXTAREA';
 
-export const postReducer = (state, action) => {
+let initialState = {
+    posts: [
+        { username: 'dimka', content: 'something text', avatar: 'https://ris.icc.ru/plugins/bree7e/cris/assets/images/man.png', likes: 3 },
+        { username: 'dimka', content: 'something text', avatar: 'https://apps.shopifycdn.com/listing_images/e8c7c2fb54b0b2b65bde115e60c3a9e9/icon/97093c0683cfe748e413a8b6bd496a10.png', likes: 2, },
+        { username: 'dimka', content: 'hello! how are you?', avatar: 'https://ris.icc.ru/plugins/bree7e/cris/assets/images/man.png', likes: 5 },
+    ],
+    textareaInput: ''
+}
+
+export const postReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_POST: {
             let newPost = {
@@ -10,14 +19,20 @@ export const postReducer = (state, action) => {
                 avatar: 'https://ris.icc.ru/plugins/bree7e/cris/assets/images/man.png',
                 likes: 0
             }
-            state.posts.push(newPost);
-            state.textareaInput = ''
-            return state;
+            return {
+                ...state,
+                posts: [
+                    ...state.posts,
+                    newPost
+                ],
+                textareaInput: ''
+            }
         }
         case UPDATE_POST_TEXTAREA: {
-            
-            state.textareaInput = action.text;
-            return state;
+            return {
+                ...state,
+                textareaInput: action.text
+            }
         }
         default: {
             return state;

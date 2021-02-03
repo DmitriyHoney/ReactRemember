@@ -5,13 +5,11 @@ import { NavLink } from 'react-router-dom'
 const ActiveFriends = (props) => {
     if (props.activeFiends) {
         return (
-            props.activeFiends.map(user => {
-                return (
-                    <NavLink to={`/profile/${user.id}`}>
+            props.activeFiends.map(user => (
+                <NavLink to={`/profile/${user.id}`} key={user.id}>
                         <Avatar avatar={user.avatar} />
-                    </NavLink>
-                )
-            })
+                </NavLink>
+            ))
         )
     } else {
         return ''

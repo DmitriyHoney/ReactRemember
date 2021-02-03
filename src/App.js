@@ -3,28 +3,31 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import './App.css';
 
 import Header from './components/Header/Header.jsx'
-import Navbar from './components/Navbar/Navbar.jsx'
-import Profile from './components/Profile/Profile.jsx'
-import Dialogs from './components/Dialogs/Dialogs.jsx' 
+import { Provider } from 'react-redux';
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import NavbarContainer from "./components/Navbar/NavbarContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 
 const App = (props) => {
-    let {profilePage, dialogsPage, sidebarPage } = props.store;
+    let { store } = props;
+
     return (
         <BrowserRouter>
-            <div className="app-wrapper" >
-                <Header />
-                <Navbar sidebarPage={sidebarPage}/>
-                <div className="content">
-                    <Route path="/profile" component={() => <Profile profilePage={profilePage} dispatch={props.dispatch}/>}/>
-                    <Route path="/dialogs" component={() => <Dialogs dialogsPage={dialogsPage} dispatch={props.dispatch}/>}/>
+            <Provider store={store}>
+                <div className="app-wrapper" >
+                    <Header />
+                    <NavbarContainer />
+                    <div className="content">
+                        <Route path="/profile" component={() => <ProfileContainer />}/>
+                        <Route path="/dialogs" component={() => <DialogsContainer />}/>
+                        <Route path="/users" component={() => <UsersContainer />}/>
+                    </div>
                 </div>
-                
-            </div>
+            </Provider>
         </BrowserRouter>
     );
 }
 
 export default App;
-
-//реализовать textarea в dialogs

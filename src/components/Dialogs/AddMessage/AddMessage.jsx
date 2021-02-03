@@ -1,23 +1,23 @@
 import cls from '../AddMessage/AddMessage.module.css'
-import { updateDialogTextareaActionCreator, addDialogMessageActionCreator } from '../../../redux/reducer-dialog'
 
 const AddMessage = (props) => {
-    let { dispatch, newMessageTextarea } = props;
-    function handleTextarea(e) {
-        dispatch(updateDialogTextareaActionCreator(e.target.value))
+    debugger;
+    let { dialogsPage,  handleTextarea, handleAddNewMessage } = props;
+    function handleTextareaDumb(e) {
+        handleTextarea(e.target.value)
     }
-    function handleAddNewMessage(e) {
-        dispatch(addDialogMessageActionCreator())
+    function handleAddNewMessageDumb() {
+        handleAddNewMessage()
     }
     return (
         <div className={cls.wrap}>
             <textarea 
                 placeholder="add message" 
                 className={cls.textarea} 
-                value={newMessageTextarea}
-                onChange={handleTextarea}
+                value={dialogsPage.newMessageTextarea}
+                onChange={handleTextareaDumb}
             />
-            <button className={cls.wrapBtn} onClick={handleAddNewMessage}>Send message</button>
+            <button className={cls.wrapBtn} onClick={handleAddNewMessageDumb}>Send message</button>
         </div>
     )
 }

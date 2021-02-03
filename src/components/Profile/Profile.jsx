@@ -1,14 +1,21 @@
-import MyPosts from './MyPosts/MyPosts.jsx'
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx'
+import MyPosts from "./MyPosts/MyPosts";
+import React from "react";
 
-// import cls from './Profile.module.css'
+
 
 const Profile = (props) => {
-    let { posts, textareaInput } = props.profilePage
+    let { profilePage, handleInput, handleAddPost } = props;
+
     return (
         <div>
             <ProfileInfo />
-            <MyPosts posts={posts}  textareaInput={textareaInput} dispatch={props.dispatch}/>
+            <MyPosts
+                posts={profilePage.posts}
+                textareaInput={profilePage.textareaInput}
+                updateTextareaField={(text) => handleInput(text)}
+                addPostHandler={() => handleAddPost()}
+            />
         </div>
     )
 }
