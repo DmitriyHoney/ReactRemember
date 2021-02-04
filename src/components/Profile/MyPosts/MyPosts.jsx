@@ -1,32 +1,26 @@
 import React from 'react'
 import Post from './Post/Post.jsx'
-
-import { addPostActionCreator, updatePostTextareaActionCreator } from '../../../redux/reducer-post'
-
 import cls from './MyPosts.module.css'
 
 const MyPosts = (props) => {
-  let {posts, textareaInput, dispatch} = props;
+  let { posts, textareaInput, updateTextareaField, addPostHandler } = props;
 
   function handleAddPost() {
-    dispatch(addPostActionCreator())
+    addPostHandler()
   }
-  function handleInput() {
-    
-    dispatch(updatePostTextareaActionCreator(textareaRef.current.value))
+  function handleInput(e) {
+    updateTextareaField(e.target.value)
   }
-
-  let textareaRef = React.createRef()
   
     return (
         <div>
-            My posts
+            My postsupdateTextareaField
             <div>
-                <textarea ref={textareaRef} onChange={handleInput} value={textareaInput}></textarea>
+                <textarea onChange={handleInput} value={textareaInput}></textarea>
                 <button onClick={handleAddPost}>add post</button>
             </div>
             <div className={cls.posts}>
-              {posts.map(post => <Post username={post.username} content={post.content} avatar={post.avatar}/>)}
+              {posts.map((post, index) => <Post username={post.username} content={post.content} avatar={post.avatar} key={index} />)}
             </div>
         </div>
     )
