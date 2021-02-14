@@ -1,4 +1,4 @@
-const UPDATE_DIALOGS_TEXTAREA   = 'UPDATE_DIALOGS_TEXTAREA';
+
 const ADD_MESSAGE_TO_DIALOG     = 'ADD_MESSAGE_TO_DIALOG';
 
 let initialState = {
@@ -9,26 +9,18 @@ let initialState = {
     messages: [
         { isMine: false, text: 'Hello!' },
         { isMine: true, text: 'Hello, how are you?' }
-    ],
-    newMessageTextarea: ''
+    ]
 }
 
 export const dialogReducer = (state = initialState, action) => {
     switch(action.type) {
-        case UPDATE_DIALOGS_TEXTAREA: {
-            return {
-                ...state,
-                newMessageTextarea: action.text
-            }
-        }
         case ADD_MESSAGE_TO_DIALOG: {
             return {
                 ...state,
                 messages: [
                     ...state.messages,
-                    { isMine: true, text: state.newMessageTextarea }
-                ],
-                newMessageTextarea: ''
+                    { isMine: true, text: action.text }
+                ]
             }
         }
         default: {
@@ -37,5 +29,5 @@ export const dialogReducer = (state = initialState, action) => {
     }
 }
 
-export const updateDialogTextareaActionCreator = (text)    => ({ type: UPDATE_DIALOGS_TEXTAREA, text: text })
-export const addDialogMessageActionCreator     = ()        => ({ type: ADD_MESSAGE_TO_DIALOG })
+//AC
+export const addDialogMessageActionCreator = (text) => ({ type: ADD_MESSAGE_TO_DIALOG, text: text })

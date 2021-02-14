@@ -1,70 +1,71 @@
 import React from "react";
 import {connect} from "react-redux";
-import {
-    setUsersCurrentPageAC,
-    setUsersAC,
-    toggleFollowUserAC,
-    setUsersTotalCountAC,
-    setUsersIsLoadingAC
-} from "../../redux/reducer-users";
+import { getUsersThunkCreator, followThunkCreator, unfollowThunkCreator } from "../../redux/reducer-users";
 import Users from "./Users";
-import * as axios from "axios";
 import Preloader from "../common/Preloader/Preloader";
+import withAuthRedirect from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
+import { superSelectUsers } from "../../redux/selectors";
 
-const mapStateToProps = (state) => ({
-    usersPage: state.usersPage
-})
 
-const mapDispatchToProps = (dispatch) => ({
-    toggleFollow: (id) => {
-        dispatch(toggleFollowUserAC(id))
-    },
-    setUsers: (users) => {
-        dispatch(setUsersAC(users))
-    },
-    setCurrentPage: (page) => {
-        dispatch(setUsersCurrentPageAC(page))
-    },
-    setTotalCount: (num) => {
-        dispatch(setUsersTotalCountAC(num))
-    },
-    setIsLoading: (bool) => {
-        dispatch(setUsersIsLoadingAC(bool))
+const mapStateToProps = (state) => {
+    console.log('mapStateToProps users');
+    return {
+        followingProcessStack: state.usersPage.followingProcessStack,
+        users: superSelectUsers(state),
+        paginate: state.usersPage.paginate,
+        isLoading: state.usersPage.isLoading
     }
-})
+}
+
+// const mapDispatchToProps = (dispatch) => ({
+//     toggleFollow: (id) => {
+//         dispatch(toggleFollowUserAC(id))
+//     },
+//     setUsers: (users) => {
+//         dispatch(setUsersAC(users))
+//     },
+//     setCurrentPage: (page) => {
+//         dispatch(setUsersCurrentPageAC(page))
+//     },
+//     setTotalCount: (num) => {
+//         dispatch(setUsersTotalCountAC(num))
+//     },
+//     setIsLoading: (bool) => {
+//         dispatch(setUsersIsLoadingAC(bool))
+//     }
+// })
 
 class UsersContainer extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     componentDidMount() {
-        this.fetchUsers(this.props.usersPage.paginate.page, this.props.usersPage.paginate.count)
+        this.props.getUsersThunkCreator(this.props.paginate.page, this.props.paginate.count)
     }
 
     handlePaginateClick = (newPage) => {
-        this.props.setCurrentPage(newPage);
-        this.fetchUsers(newPage, this.props.usersPage.paginate.count)
-    }
-
-    fetchUsers(page, count) {
-        this.props.setIsLoading(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${count}`)
-            .then(response => {
-                this.props.setUsers(response.data.items)
-                this.props.setTotalCount(response.data.totalCount)
-            })
-            .finally(() => {
-                this.props.setIsLoading(false)
-            })
+        this.props.getUsersThunkCreator(newPage, this.props.paginate.count)
     }
 
     render() {
+        console.log('UsersContainer render');
         return <>
-            {this.props.usersPage.isLoading ? <Preloader /> : ''}
+            {this.props.isLoading ? <Preloader /> : ''}
             <Users
-                usersPage={this.props.usersPage}
+                paginate={this.props.paginate}
+                followingProcessStack={this.props.followingProcessStack}
+                users={this.props.users}
                 changePage={this.handlePaginateClick}
-                toggleFollow={this.props.toggleFollow}
+                followThunk={this.props.followThunkCreator}
+                unfollowThunk={this.props.unfollowThunkCreator}
             />
         </>
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
+export default compose(
+    // withAuthRedirect,
+    connect(mapStateToProps, { getUsersThunkCreator, followThunkCreator, unfollowThunkCreator })
+)(UsersContainer)
