@@ -1,8 +1,13 @@
 .header {
     grid-area: header;
     background-color: rgb(172, 241, 172);
-  }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
   
 .header img {
     width: 80px;
 }
+

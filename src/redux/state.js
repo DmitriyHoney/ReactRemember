@@ -1,5 +1,5 @@
 
-import { postReducer } from './reducer-post';
+import { postReducer } from './reducer-profile';
 import { dialogReducer } from './reducer-dialog';
 
 const store = {

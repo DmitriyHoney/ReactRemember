@@ -2,7 +2,7 @@
 
 let initialState = {
     links: [
-        { name: 'Profile', path: '/profile' },
+        { name: 'Profile', path: '/profile/6722' },
         { name: 'Users', path: '/users' },
         { name: 'Dialogs', path: '/dialogs' },
         { name: 'News', path: '/news' },
