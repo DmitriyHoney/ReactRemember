@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ca8ae477-550e-4540-918b-35ee5403a5cc" name="taxi_front">
+        <fileTransfer rootFolder="/var/www/taxi_front/taxi" accessType="SFTP" host="84.53.195.142" port="2050" sshConfigId="ac9b294d-64e5-437a-92c1-42b4fc0ac75e" sshConfig="root@84.53.195.142:2050 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
