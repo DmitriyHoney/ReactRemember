@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/ReactRemember/static/css/main.e9f6e9e0.chunk.css",
+    "main.js": "/ReactRemember/static/js/main.c84b7b9b.chunk.js",
+    "main.js.map": "/ReactRemember/static/js/main.c84b7b9b.chunk.js.map",
+    "runtime-main.js": "/ReactRemember/static/js/runtime-main.82874866.js",
+    "runtime-main.js.map": "/ReactRemember/static/js/runtime-main.82874866.js.map",
+    "static/js/2.4134b8f2.chunk.js": "/ReactRemember/static/js/2.4134b8f2.chunk.js",
+    "static/js/2.4134b8f2.chunk.js.map": "/ReactRemember/static/js/2.4134b8f2.chunk.js.map",
+    "index.html": "/ReactRemember/index.html",
+    "static/css/main.e9f6e9e0.chunk.css.map": "/ReactRemember/static/css/main.e9f6e9e0.chunk.css.map",
+    "static/js/2.4134b8f2.chunk.js.LICENSE.txt": "/ReactRemember/static/js/2.4134b8f2.chunk.js.LICENSE.txt",
+    "static/media/defaultUser.a0d560fc.jpg": "/ReactRemember/static/media/defaultUser.a0d560fc.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.82874866.js",
+    "static/js/2.4134b8f2.chunk.js",
+    "static/css/main.e9f6e9e0.chunk.css",
+    "static/js/main.c84b7b9b.chunk.js"
+  ]
+}
