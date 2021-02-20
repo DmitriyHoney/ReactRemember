@@ -10,7 +10,7 @@ const Profile = (props) => {
             <MyPosts
                 posts={profilePage.posts}
                 textareaInput={profilePage.textareaInput}
-                addPost={(text) => addPostActionCreator(text)}
+                addPost={addPostActionCreator}
             />
         </div>
     )

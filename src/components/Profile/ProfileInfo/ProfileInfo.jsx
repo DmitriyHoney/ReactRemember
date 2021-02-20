@@ -1,6 +1,6 @@
 import cls from './ProfileInfo.module.css'
 import defaultImage from '../../../assets/defaultUser.jpg';
-import ProfileStatus from "../ProfileStatus/ProfileStatus";
+import ProfileStatus from "../ProfileStatus/ProfileStatusFunc";
 
 const ProfileInfo = (props) => {
     if (!props.profile) return false;

@@ -6,9 +6,9 @@ import { required, minLength } from '../../../utils/validators.js'
 import { Textarea } from '../../common/FormControls/index.js'
 const minLength5 = minLength(5);
 
-const MyPosts = (props) => {
+const MyPosts = React.memo(props => {
   let { posts, addPost } = props;
-  
+  console.log('render');
 
   function handleSubmit(formData) {
     addPost(formData.text);
@@ -23,7 +23,7 @@ const MyPosts = (props) => {
           </div>
       </div>
   )
-}
+})
 
 const AddPostForm = props => {
 

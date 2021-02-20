@@ -3,12 +3,13 @@ import {profileAPI} from "../api/api";
 const ADD_POST                  = 'ADD_POST';
 const SET_PROFILE               = 'SET_PROFILE';
 const SET_PROFILE_STATUS        = 'SET_PROFILE_STATUS';
+const DELETE_POST               = 'DELETE_POST';
 
 let initialState = {
     posts: [
-        { username: 'dimka', content: 'something text', avatar: 'https://ris.icc.ru/plugins/bree7e/cris/assets/images/man.png', likes: 3 },
-        { username: 'dimka', content: 'something text', avatar: 'https://apps.shopifycdn.com/listing_images/e8c7c2fb54b0b2b65bde115e60c3a9e9/icon/97093c0683cfe748e413a8b6bd496a10.png', likes: 2, },
-        { username: 'dimka', content: 'hello! how are you?', avatar: 'https://ris.icc.ru/plugins/bree7e/cris/assets/images/man.png', likes: 5 },
+        { username: 'dimka', content: 'something text', avatar: 'https://ris.icc.ru/plugins/bree7e/cris/assets/images/man.png', likes: 3, id: 1 },
+        { username: 'dimka', content: 'something text', avatar: 'https://apps.shopifycdn.com/listing_images/e8c7c2fb54b0b2b65bde115e60c3a9e9/icon/97093c0683cfe748e413a8b6bd496a10.png', likes: 2, id: 2  },
+        { username: 'dimka', content: 'hello! how are you?', avatar: 'https://ris.icc.ru/plugins/bree7e/cris/assets/images/man.png', likes: 5, id: 3 },
     ],
     profile: null,
     status: ''
@@ -37,6 +38,12 @@ export const profileReducer = (state = initialState, action) => {
                 status: action.text
             }
         }
+        case DELETE_POST: {
+            return {
+                ...state,
+                posts: state.posts.filter(p => p.id !== action.id)
+            }
+        }
         case SET_PROFILE: {
             return {
                 ...state,
@@ -53,6 +60,7 @@ export const profileReducer = (state = initialState, action) => {
 export const addPostActionCreator               = (text)        => ({ type: ADD_POST, text: text })
 export const setProfileActionCreator            = (profile)     => ({ type: SET_PROFILE, profile: profile })
 export const setProfileStatusActionCreator      = (text)        => ({ type: SET_PROFILE_STATUS, text: text })
+export const deletePostAC                       = (id)          => ({ type: DELETE_POST, id: id })
 
 //ThunkCreator
 export const getProfileThunkCreator = (id) => {

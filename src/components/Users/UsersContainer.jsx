@@ -9,7 +9,6 @@ import { superSelectUsers } from "../../redux/selectors";
 
 
 const mapStateToProps = (state) => {
-    console.log('mapStateToProps users');
     return {
         followingProcessStack: state.usersPage.followingProcessStack,
         users: superSelectUsers(state),
@@ -50,7 +49,6 @@ class UsersContainer extends React.Component {
     }
 
     render() {
-        console.log('UsersContainer render');
         return <>
             {this.props.isLoading ? <Preloader /> : ''}
             <Users
